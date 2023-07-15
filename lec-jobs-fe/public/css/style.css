@@ -2078,7 +2078,12 @@ select {
   width: 100% !important;
 }
 
+
 /* ================= sign-in ================ */
+#signup-form .col-lg-6, #signup-form .col-lg-12, #login-form .col-lg-6, #login-form .col-lg-12 {
+  padding-left: 0px !important;
+  padding-right: 5px !important;
+}
 
 .sign-in {
   background-color: #e75348;
@@ -2086,10 +2091,11 @@ select {
 .sign-in-page {
   float: left;
   width: 100%;
+  /* height: 100vh; */
   padding: 100px 0 20px 0;
 }
 .signin-popup {
-  width: 870px;
+  width: 960px;
   margin: 0 auto;
   position: relative;
 }
@@ -2131,7 +2137,7 @@ select {
   content: "";
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 40%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -2174,6 +2180,7 @@ select {
 .cmp-info > img {
   width: 100%;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* =============== login-sec ============= */
@@ -2181,6 +2188,7 @@ select {
 .login-sec {
   float: left;
   width: 100%;
+  height: 640px;
   padding: 30px 0;
   position: relative;
 }
@@ -2250,8 +2258,8 @@ select {
 .sign_in_sec {
   float: left;
   width: 100%;
-  padding-right: 75px;
-  padding-left: 60px;
+  padding-right: 20px;
+  padding-left: 20px;
   display: none;
 }
 .sign_in_sec.current {
