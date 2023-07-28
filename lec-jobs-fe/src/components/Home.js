@@ -1,22 +1,267 @@
 import { Component } from "react";
 import Header from "./Header";
 import UserData from "./UserData";
-import RightSideBar from "./RightSideBar";
-import MainSection from "./MainSection";
+import PostTopBar from "./PostTopBar";
+import PostSection from "./PostSection";
+import TagsSection from "./TagsSection";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
+  componentDidMount() {
+    fetch("http://localhost:5000/api/v1/user")
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({ user: data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   render() {
+    const user = this.state.user;
+    // const user = { ...this.state.user };
+    // const { user } = this.state;
+    if (!Object.keys(user).length) {
+      return <div></div>;
+    }
     return (
       <div className="wrapper">
-        <Header />
+        <Header user={user} />
         <main>
           <div className="main-section">
             <div className="container">
               <div className="main-section-data">
                 <div className="row">
-                    <UserData />
-                    <MainSection/>
-                  < RightSideBar/>
+                  <UserData user={user} />
+                  <div className="col-lg-6 col-md-8 no-pd">
+                    <div className="main-ws-sec">
+                      <PostTopBar user={user} />
+                      <PostSection />
+                    </div>
+                  </div>
+                  <div className="col-lg-3 pd-right-none no-pd">
+                    <div className="right-sidebar">
+                      <div
+                        className="widget widget-about"
+                        style={{ display: "none" }}
+                      >
+                        <img src="./images/lec.png" alt="" />
+                        <h3>Track Time on LEC</h3>
+                        <span>Pay only for the Hours worked</span>
+                        <div className="sign_link">
+                          <h3>
+                            <a href="./sign-in.html" title="">
+                              Sign up
+                            </a>
+                          </h3>
+                          <a href="./index.html#" title="">
+                            Learn More
+                          </a>
+                        </div>
+                      </div>
+                      <div
+                        className="widget widget-jobs"
+                        style={{ display: "none" }}
+                      >
+                        <div className="sd-title">
+                          <h3>Top Jobs</h3>
+                          <i className="la la-ellipsis-v"></i>
+                        </div>
+                        <div className="jobs-list">
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior Product Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior UI / UX Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Junior Seo Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior PHP Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior Developer Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <TagsSection />
+                      <div
+                        className="widget widget-jobs"
+                        style={{ display: "none" }}
+                      >
+                        <div className="sd-title">
+                          <h3>Most Viewed This Week</h3>
+                          <i className="la la-ellipsis-v"></i>
+                        </div>
+                        <div className="jobs-list">
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior Product Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Senior UI / UX Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                          <div className="job-info">
+                            <div className="job-details">
+                              <h3>Junior Seo Designer</h3>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
+                            </div>
+                            <div className="hr-rate">
+                              <span>$25/hr</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="widget suggestions full-width"
+                        style={{ display: "none" }}
+                      >
+                        <div className="sd-title">
+                          <h3>Most Viewed People</h3>
+                          <i className="la la-ellipsis-v"></i>
+                        </div>
+                        <div className="suggestions-list">
+                          <div className="suggestion-usd">
+                            <img src="./images/s1.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Jessica William</h4>
+                              <span>Graphic Designer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="suggestion-usd">
+                            <img src="./images/s2.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Saroj Shakya</h4>
+                              <span>PHP Developer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="suggestion-usd">
+                            <img src="./images/s3.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Poonam</h4>
+                              <span>Wordpress Developer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="suggestion-usd">
+                            <img src="./images/s4.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Bill Gates</h4>
+                              <span>C &amp; C++ Developer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="suggestion-usd">
+                            <img src="./images/s5.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Jessica William</h4>
+                              <span>Graphic Designer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="suggestion-usd">
+                            <img src="./images/s6.png" alt="" />
+                            <div className="sgt-text">
+                              <h4>Saroj Shakya</h4>
+                              <span>PHP Developer</span>
+                            </div>
+                            <span>
+                              <i className="la la-plus"></i>
+                            </span>
+                          </div>
+                          <div className="view-more">
+                            <a href="./index.html#" title="">
+                              View More
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

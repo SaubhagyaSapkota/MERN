@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Loginn extends Component {
+class Login extends Component {
   render() {
     return (
       <div className="sign-in-page" style={{ background: "cornflowerblue" }}>
@@ -276,4 +276,4 @@ class Loginn extends Component {
   }
 }
 
-export default Loginn;
+export default Login;

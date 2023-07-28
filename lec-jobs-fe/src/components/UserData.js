@@ -1,20 +1,9 @@
 import { Component } from "react";
-const UserData = {
-  email: "test@test.com",
-  username: "test123",
-  fullname:"Test User",
-  title: "Software Developer",
-  skills: ["35", "PHP", "JAVA"],
-  address: "Kathmandu, Nepal",
-  job_type: "Full Time",
-  id: 1,
-  is_active: true,
-  followers: ["username123","user234","user543"],
-  following: ["username123","user234","user543"],
-};
 
 class UserData extends Component {
   render() {
+    // const user = this.props.user;
+    const { user } = this.props;
     return (
       <div className="col-lg-3 col-md-4 pd-left-none no-pd">
         <div className="main-left-sidebar no-margin">
@@ -22,22 +11,22 @@ class UserData extends Component {
             <div className="user-profile">
               <div className="username-dt">
                 <div className="usr-pic">
-                  <img src="./images/me.jpg" alt="" />
+                  <img src={"./images/" + user?.username + ".jpg"} alt="" />
                 </div>
               </div>
               <div className="user-specs">
-                <h3>Saubhagya Sapkota</h3>
-                <span>Research Head</span>
+                <h3>{user?.fullname}</h3>
+                <span>{user?.title}</span>
               </div>
             </div>
             <ul className="user-fw-status">
               <li>
                 <h4>Following</h4>
-                <span>40</span>
+                <span>{user?.followings?.length}</span>
               </li>
               <li>
                 <h4>Followers</h4>
-                <span>352</span>
+                <span>{user?.followers?.length}</span>
               </li>
               <li>
                 <a href="./my-profile.html" title="">
@@ -175,4 +164,5 @@ class UserData extends Component {
     );
   }
 }
+
 export default UserData;
