@@ -21,6 +21,20 @@ class Home extends Component {
       .catch((err) => {
         console.error(err);
       });
+
+    fetch("http://localhost:5000/api/v1/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {

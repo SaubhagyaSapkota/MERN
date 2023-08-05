@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-import Home from './components/Home';
-//import Loginn from './components/Loginn'; 
+// import Home from "./components/Home";
+import Login from "./components/Login";
 function App() {
   return (
-    // <Loginn/>
-    <Home />
+    <Login />
+    // <Home />
   );
 }
 
